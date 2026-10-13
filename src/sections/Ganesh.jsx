@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Card from '../components/Card'
+import ThemeDecor from '../components/ThemeDecor'
 import Reveal from '../components/Reveal'
 import SplitText from '../components/SplitText'
 import { mantra, opening } from '../data/content'
@@ -9,17 +10,15 @@ export default function Ganesh() {
   const [hasPhoto, setHasPhoto] = useState(true)
 
   return (
-    <Card id="ganesh" label="Shri Ganeshay Namah">
+    <Card decor={<ThemeDecor theme="ganesh" />} id="ganesh" label="Shri Ganeshay Namah">
       <Reveal className="flex flex-col items-center">
-        <div className="relative grid size-36 place-items-center sm:size-48 lg:size-52">
-          <span className="absolute inset-0 rounded-full border border-rust/60" />
-          <span className="animate-spin-slow absolute inset-2 rounded-full border border-dashed border-teal-deep/40" />
+        <div className="animate-float relative grid size-40 place-items-center sm:size-52 lg:size-56">
           {hasPhoto ? (
             <img
               src={img('ganesh.png')}
               alt="Shri Ganesh"
               onError={() => setHasPhoto(false)}
-              className="size-[86%] rounded-full object-cover"
+              className="size-full object-contain drop-shadow-[0_6px_14px_rgba(140,50,30,0.28)]"
             />
           ) : (
             <span lang="gu" className="font-gujarati text-7xl font-bold text-rust sm:text-8xl">

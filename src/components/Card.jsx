@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { CardContext, useInViewOnce } from './motion'
+import { DefaultFalling } from './ThemeDecor'
 import { img } from '../asset'
 
 // Teal watercolour blooms that wash over a page as it arrives (video transition)
@@ -35,7 +36,7 @@ export default function Card({ id, label, children, peacock = true, className = 
             {cornerMantra}
           </div>
         )}
-        {decor && <div className="absolute inset-0 z-[5]">{decor}</div>}
+        <div className="absolute inset-0 z-[5]">{decor || <DefaultFalling />}</div>
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-30 overflow-hidden">
           {INK.map((ink, i) => (
             <img
@@ -56,13 +57,13 @@ export default function Card({ id, label, children, peacock = true, className = 
             src={img('peacock.webp')}
             alt=""
             aria-hidden="true"
-            className="card-peacock pointer-events-none absolute bottom-[calc(-1*var(--bw))] left-[calc(-1*var(--bw))] z-10 w-[38%] max-w-[280px] select-none opacity-80 sm:w-[30%] sm:max-w-[340px] lg:w-[22%] lg:max-w-[380px]"
+            className="card-peacock pointer-events-none absolute bottom-[calc(-1*var(--bw))] left-[calc(-1*var(--bw))] z-10 w-[30%] max-w-[260px] select-none opacity-80 sm:w-[30%] sm:max-w-[340px] lg:w-[22%] lg:max-w-[380px]"
           />
         )}
 
         <CardContext.Provider value={since}>
           <div
-            className={`relative z-20 flex flex-1 flex-col items-center justify-start px-4 pt-16 pb-20 text-center sm:justify-center sm:px-10 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28 ${className}`}
+            className={`relative z-20 flex flex-1 flex-col items-center justify-start px-4 pt-28 pb-36 text-center sm:justify-center sm:px-10 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28 ${className}`}
           >
             <div className="my-auto flex w-full flex-col items-center">
               {children}
